@@ -1,0 +1,13 @@
+# Python
+*.o
+__pycache__/
+*.py[cod]
+*.egg-info/
+virtualenv/
+
+# C++
+build/*
+bin/*
+
+# VSCode
+.vscode/
