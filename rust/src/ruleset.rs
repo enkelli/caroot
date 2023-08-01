@@ -15,7 +15,9 @@ impl RuleSet {
     pub fn random(radius: usize, state_count: u32) -> Self {
         let mut rules: BTreeMap<Vec<u32>, u32> = BTreeMap::new();
         let rule_length = 2 * radius + 1;
-        let items: Vec<u32> = (0..state_count).flat_map(|v| vec![v; rule_length]).collect();
+        let items: Vec<u32> = (0..state_count)
+            .flat_map(|v| vec![v; rule_length])
+            .collect();
 
         let mut rng = rand::thread_rng();
         let range = Uniform::new(0, state_count);
