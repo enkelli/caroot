@@ -9,6 +9,7 @@ pub struct Config {
     pub state_count: i32,
     pub max_dev_iters: i32,
     pub mutation_perc: i32,
+    pub output_file: String,
 }
 
 pub fn get_config() -> Config {
@@ -19,6 +20,7 @@ pub fn get_config() -> Config {
         state_count: 4,
         max_dev_iters: 100,
         mutation_perc: 10,
+        output_file: "ruleset.csv".to_string(),
     };
 
     load_config().unwrap_or(default_conf)

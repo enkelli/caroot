@@ -74,4 +74,6 @@ fn main() {
         "Best ruleset (fitness: {}):\n{:?}",
         best_fitness, best_ruleset
     );
+    best_ruleset.to_file(&config.output_file);
+    println!("Ruleset written to: {}", config.output_file);
 }

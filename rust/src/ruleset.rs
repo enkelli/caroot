@@ -4,6 +4,8 @@ use rand::Rng;
 use std::collections::BTreeMap;
 use std::collections::HashSet;
 use std::fmt;
+use std::fs::File;
+use std::io::Write;
 
 #[derive(Clone)]
 pub struct RuleSet {
@@ -67,6 +69,21 @@ impl RuleSet {
                 *value = get_neutral_state(states)
             }
             i += 1;
+        }
+    }
+
+    pub fn to_file(&self, file_path: &str) {
+        let mut file = File::create(file_path).expect("Unable to create file.");
+        for (states, new_state) in &self.rules {
+            let states_str = states
+                .iter()
+                .map(|s| s.to_string())
+                .collect::<Vec<String>>()
+                .join(",");
+
+            let content = format!("{},{}\n", states_str, new_state);
+            file.write_all(content.as_bytes())
+                .expect("Unable to write to file.");
         }
     }
 }
