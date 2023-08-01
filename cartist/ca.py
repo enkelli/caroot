@@ -4,7 +4,7 @@
 class SqrtCA:
     """Simple 1D cellular automaton."""
 
-    def __init__(self, rule_set=None, number=0):
+    def __init__(self, rule_set=None, number=0, max_iters=10000):
         self._rule_set = rule_set if rule_set else {}
         self._number = number
         self._rule_len = self._rule_set.rule_len
@@ -16,15 +16,20 @@ class SqrtCA:
         self._ca[-self._boundary_len :] = [0] * self._boundary_len
         self._ca_len = len(self._ca)
         self._changed = False
+        self._max_iters = max_iters
 
     def develop(self, generations=None):
         """Develops the CA. When `generations` is ``None``, it evolves CA until
         it is stable.
         """
+        iters = 0
         while True:
             self.evolve()
             if not self.has_changed():
                 return
+            iters += 1
+            if iters > self._max_iters:
+                break
 
     def evolve(self):
         """Runs one evolutionary step on the automaton."""
