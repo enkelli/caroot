@@ -1,4 +1,4 @@
-use hocon::{Error,HoconLoader};
+use hocon::{Error, HoconLoader};
 use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
@@ -25,10 +25,10 @@ pub fn get_config() -> Config {
 }
 
 fn load_config() -> Result<Config, Error> {
-    let path = get_config_file_path().unwrap_or_default();
+    let path = get_config_file_path();
     HoconLoader::new().load_file(path)?.resolve()
 }
 
-fn get_config_file_path() -> Option<String> {
-    Some("config.conf".to_string())
+fn get_config_file_path() -> String {
+    "config.conf".to_string()
 }
