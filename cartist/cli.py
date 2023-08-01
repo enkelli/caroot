@@ -13,7 +13,7 @@ from cartist.rules import DEFAULT_RULE_SET
 class CLIArtist(Artist):
     """Cellular Automata artist in CLI.
 
-    :param dict rule_set: Rule set used in cellular automaton.
+    :param dict ruleset: Rule set used in cellular automaton.
     :param int number: Number to be squared.
     :param bool random_chars: Use random characters for each run?
     """
@@ -21,8 +21,8 @@ class CLIArtist(Artist):
     _chars = string.punctuation + string.ascii_letters + string.digits
     _random_chars = random.sample(_chars, len(_chars))
 
-    def __init__(self, number, rule_set=DEFAULT_RULE_SET, random_chars=True):
-        super().__init__(number, rule_set)
+    def __init__(self, number, ruleset=DEFAULT_RULE_SET, random_chars=True):
+        super().__init__(number, ruleset)
 
         self._use_random_chars = random_chars
 

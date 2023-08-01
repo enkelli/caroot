@@ -6,7 +6,7 @@ import sys
 from cartist import Artist
 from cartist.cli import CLIArtist
 from cartist.rules import DEFAULT_RULE_SET
-from cartist.rules import get_rule_set_from_csv
+from cartist.rules import get_ruleset_from_csv
 
 
 def parse_args(args):
@@ -18,7 +18,7 @@ def parse_args(args):
         '--rule-set',
         metavar='FILE',
         nargs=1,
-        dest='rule_set',
+        dest='ruleset',
         help='CSV file with rule set.',
     )
     parser.add_argument(
@@ -47,25 +47,25 @@ def parse_args(args):
 
 def main(args=None):
     args = parse_args(args if args else sys.argv[1:])
-    rule_set = DEFAULT_RULE_SET
+    ruleset = DEFAULT_RULE_SET
     try:
-        if args.rule_set:
-            rule_set = get_rule_set_from_csv(args.rule_set[0])
+        if args.ruleset:
+            ruleset = get_ruleset_from_csv(args.ruleset[0])
     except Exception as ex:
         print(ex)
         sys.exit(1)
 
     if args.sqrt_only:
-        artist = Artist(args.number, rule_set)
+        artist = Artist(args.number, ruleset)
     elif args.gui:
         try:
             from cartist.gui import GUIArtist
-            artist = GUIArtist(args.number, rule_set)
+            artist = GUIArtist(args.number, ruleset)
         except ImportError:
             print('tkinter not installed, falling back to CLI...\n')
-            artist = CLIArtist(args.number, rule_set)
+            artist = CLIArtist(args.number, ruleset)
     else:
-        artist = CLIArtist(args.number, rule_set)
+        artist = CLIArtist(args.number, ruleset)
 
     artist.paint()
 

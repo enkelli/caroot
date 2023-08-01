@@ -15,9 +15,9 @@ from cartist.rules import DEFAULT_RULE_SET
 class GUIArtist(Artist):
     """Cellular Automata artist."""
 
-    def __init__(self, number, rule_set=DEFAULT_RULE_SET):
-        self._rule_set = rule_set
-        self._ca = SqrtCA(rule_set, number)
+    def __init__(self, number, ruleset=DEFAULT_RULE_SET):
+        self._ruleset = ruleset
+        self._ca = SqrtCA(ruleset, number)
 
     def paint(self):
         self._window = tk.Tk()
@@ -117,5 +117,5 @@ class GUIArtist(Artist):
         except ValueError:
             print(f'invalid input: {number}')
 
-        self._ca = SqrtCA(self._rule_set, number)
+        self._ca = SqrtCA(self._ruleset, number)
         self._draw_ca()

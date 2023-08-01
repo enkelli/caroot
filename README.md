@@ -51,10 +51,10 @@ GUI requires [tkinter](https://docs.python.org/3/library/tkinter.html) installed
 ./cartist.py
 
 # Runs automaton with the given rule set and computes square root of 36.
-./cartist.py -r rule_sets/sq-4-11 36
+./cartist.py -r rulesets/sq-4-11 36
 
 # CLI version of the above.
-./cartist.py -r rule_sets/sq-4-11 16
+./cartist.py -r rulesets/sq-4-11 16
 
 ---................---
 ---1..............----
@@ -78,7 +78,7 @@ GUI requires [tkinter](https://docs.python.org/3/library/tkinter.html) installed
 √16: 4
 
 # Prints just square root of the given number.
-./cartist.py -r rule_sets/sq-4-11 -s 36
+./cartist.py -r rulesets/sq-4-11 -s 36
 6
 ```
 

@@ -52,10 +52,10 @@ int main(int args, char* argv[]) {
 		int local_best = 100000000;
 		RuleSet local_best_rule = rules[0];
 
-		for (const auto& rule_set : rules) {
+		for (const auto& ruleset : rules) {
 			int fit = 0;
 			for (auto& ca : cas) {
-				ca.develop(rule_set, max_development_loops);
+				ca.develop(ruleset, max_development_loops);
 				fit += ca.fitness();
 				ca.init();
 			}
@@ -64,11 +64,11 @@ int main(int args, char* argv[]) {
 					std::cerr << "Generation: " << i << ", fitness: " << fit << "\n";
 				}
 				best = fit;
-				best_rule = rule_set;
+				best_rule = ruleset;
 			}
 			if (fit <= local_best) {
 				local_best = fit;
-				local_best_rule = rule_set;
+				local_best_rule = ruleset;
 			}
 		}
 		if ((i % 4096) == 0) {

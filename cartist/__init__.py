@@ -9,9 +9,9 @@ from cartist.rules import DEFAULT_RULE_SET
 class Artist:
     """Cellular Automata runner."""
 
-    def __init__(self, number, rule_set=DEFAULT_RULE_SET):
-        self._rule_set = rule_set
-        self._ca = SqrtCA(rule_set, number)
+    def __init__(self, number, ruleset=DEFAULT_RULE_SET):
+        self._ruleset = ruleset
+        self._ca = SqrtCA(ruleset, number)
 
     @property
     def sqrt(self):

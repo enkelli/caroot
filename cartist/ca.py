@@ -4,10 +4,10 @@
 class SqrtCA:
     """Simple 1D cellular automaton."""
 
-    def __init__(self, rule_set=None, number=0, max_iters=10000):
-        self._rule_set = rule_set if rule_set else {}
+    def __init__(self, ruleset=None, number=0, max_iters=10000):
+        self._ruleset = ruleset if ruleset else {}
         self._number = number
-        self._rule_len = self._rule_set.rule_len
+        self._rule_len = self._ruleset.rule_len
         self._boundary_len = self._rule_len
         self._row_len = number + 2 * self._boundary_len
 
@@ -33,7 +33,7 @@ class SqrtCA:
 
     def evolve(self):
         """Runs one evolutionary step on the automaton."""
-        new_ca = [self._rule_set.get(chunk) for chunk in self._iter_ca_for_evolution()]
+        new_ca = [self._ruleset.get(chunk) for chunk in self._iter_ca_for_evolution()]
         self._changed = self._ca != new_ca
         self._ca = new_ca
 
@@ -54,7 +54,7 @@ class SqrtCA:
     def _iter_ca_for_evolution(self):
         for i in range(self._ca_len):
             chunk = []
-            for j in range(i - self._rule_set.radius, i + self._rule_set.radius + 1):
+            for j in range(i - self._ruleset.radius, i + self._ruleset.radius + 1):
                 cell = self._ca[j] if j >= 0 and j < self._ca_len else 0
                 chunk.append(cell)
             yield tuple(chunk)

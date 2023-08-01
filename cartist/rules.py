@@ -50,7 +50,7 @@ DEFAULT_RULE_SET = RuleSet(
 )
 
 
-def get_rule_set_from_csv(csv_file):
+def get_ruleset_from_csv(csv_file):
     result = {}
     with open(csv_file) as f:
         reader = csv.reader(f)
